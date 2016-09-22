@@ -413,19 +413,11 @@ skip_{{ name }}_gitconfig_since_git_not_installed:
 {% else %}
 {% for key, value in user['gitconfig'].items() %}
 users_{{ name }}_user_gitconfig_{{ loop.index0 }}:
-  {% if grains['saltversioninfo'] >= (2015, 8, 0, 0) %}
   git.config_set:
-  {% else %}
-  git.config:
-  {% endif %}
     - name: {{ key }}
     - value: "{{ value }}"
     - user: {{ name }}
-    {% if grains['saltversioninfo'] >= (2015, 8, 0, 0) %}
     - global: True
-    {% else %}
-    - is_global: True
-    {% endif %}
 {% endfor %}
 {% endif %}
 {% endif %}

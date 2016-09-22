@@ -1,6 +1,7 @@
 base:
   '*':
     - core
+    - salt
     - users
     - audio
-    - salt
+    - pip
