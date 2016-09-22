@@ -1,4 +1,5 @@
 base:
   '*':
-    - locale
+    - core
     - users
+    - audio
