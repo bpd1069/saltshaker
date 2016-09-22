@@ -3,5 +3,7 @@ essential_packages:
     - pkgs:
       - bash
       - git
-      - build-essential
       - curl
+{% if grains['os'] == 'Ubuntu' %}
+      - build-essential
+{% endif %}
