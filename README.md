@@ -14,5 +14,5 @@ sudo git clone https://github.com/lucaskolstad/saltshaker /srv
 sudo salt-call state.highstate --local
 ```
 
-Several directories are near clones of salt-formulas that I've cut down to just
-what I need. Assume attribution to the appropriate salt-formula authors.
+Several directories are near clones of salt-formulas that I've cut down. Assume
+attribution to the appropriate salt-formula authors.
