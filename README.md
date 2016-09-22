@@ -4,21 +4,23 @@ My own personal collection of salt files.
 
 ### Applying to the local system
 
-Ensure you have salt installed.
+Ensure you have salt installed. Then just download this repository somewhere
+and call the `deploy_locally.sh` script as root.
 
-Then download this repository somewhere:
+The deployment script will erase any other salt data in your `/srv/` directory,
+so be careful, and will place this repository's salt data there. Then it will
+try to apply the state to the local machine.
 
-```bash
-git clone https://github.com/lucaskolstad/saltshaker
-```
-
-The deployment script `deploy_locally.sh` will erase any other salt data in
-your `/srv/` directory, so be careful, and will place this repository's
-contents there. Then it will try to apply the state to the local machine.
+You can pass arguments to the deployment script which will be passed off as
+additional options to a call to something like: `salt-call state.highstate
+--local`
 
 ### Attribution & Licenses
 
 Some code is taken from salt-formulas that have been cut down and altered.
+
+Especially the `salt/salt` directory is a big copied blob from the formula.
+
 Assume attribution to the appropriate salt-formula authors where there is
 matching content. The license applying to the code in particular directory is
 available in a corresponding repository from
