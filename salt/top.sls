@@ -6,3 +6,4 @@ base:
     - audio
     - pip
     - vim
+    - urxvt
