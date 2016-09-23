@@ -5,3 +5,4 @@ base:
     - users
     - audio
     - pip
+    - vim

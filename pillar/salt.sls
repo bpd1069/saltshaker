@@ -11,3 +11,8 @@ salt:
   master_remove_config: True
 
   install_packages: True
+
+  fileserver_background:
+    - git
+    - root
+
