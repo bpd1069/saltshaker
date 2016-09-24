@@ -1,0 +1,7 @@
+# -*- coding: utf-8 -*-
+# vim: ft=yaml
+xmonad:
+  xmonad_pkg: xmonad
+  xmobar_pkg: xmobar
+  xmonad_dev_pkg: []
+  extensions_pkg: []

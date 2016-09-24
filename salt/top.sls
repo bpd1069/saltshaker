@@ -7,3 +7,4 @@ base:
     - pip
     - vim
     - urxvt
+    - xmonad
