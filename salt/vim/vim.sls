@@ -1,5 +1,5 @@
 {% from "vim/map.jinja" import vim with context %}
 
-vim:
+vim-installed:
   pkg.installed:
     - name: {{ vim.pkg }}
