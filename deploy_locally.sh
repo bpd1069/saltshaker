@@ -16,7 +16,7 @@ main() {
   cp -rf $DIR/pillar /srv/
   cp -rf $DIR/salt /srv/
 
-  salt-call state.highstate --state_verbose=false --local $@
+  salt-call state.apply --state_verbose=false --local $@
 }
 
 main $@

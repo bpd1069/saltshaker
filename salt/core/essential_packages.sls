@@ -5,5 +5,6 @@ essential_packages:
       - git
       - curl
 {% if grains['os'] == 'Ubuntu' %}
+      - python-software-properties
       - build-essential
 {% endif %}

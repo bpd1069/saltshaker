@@ -12,8 +12,7 @@ so be careful, and will place this repository's salt data there. Then it will
 try to apply the state to the local machine.
 
 You can pass arguments to the deployment script which will be passed off as
-additional options to a call to something like: `salt-call state.highstate
---local`
+additional options to a call to something like: `salt-call state.apply --local`
 
 ### Attribution & Licenses
 
