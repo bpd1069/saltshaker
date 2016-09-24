@@ -1,9 +1,14 @@
+# vim: ft=yaml
+
 {% if grains['os'] == 'Ubuntu' %}
-pulseaudio:
+alsa-base:
   pkg.installed
 {% endif %}
 
 {% if grains['os'] == 'Arch' %}
-pulseaudio-alsa:
+alsa-plugins:
   pkg.installed
 {% endif %}
+
+alsa-utils:
+  pkg.installed

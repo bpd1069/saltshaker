@@ -3,8 +3,9 @@ base:
     - core
     - salt
     - users
-    - audio
     - pip
     - vim
     - urxvt
     - xmonad
+    - alsa
+    - pulseaudio
