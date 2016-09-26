@@ -9,3 +9,4 @@ base:
     - xmonad
     - alsa
     - pulseaudio
+    - chromium
