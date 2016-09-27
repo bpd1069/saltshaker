@@ -10,3 +10,4 @@ base:
     - alsa
     - pulseaudio
     - chromium
+    - julia
