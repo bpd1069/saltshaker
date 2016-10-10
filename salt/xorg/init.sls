@@ -20,4 +20,10 @@ xorg-extensions-installed:
     - pkgs: [ xorg-server-utils ]
   require:
     - pkgs: [ xorg-installed ]
+
+xorg-xinit-installed:
+  pkg.installed:
+    - pkgs: [ xorg-xinit ]
+  require:
+    - Pkgs: [ xorg-installed ]
 {% endif %}
