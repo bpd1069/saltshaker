@@ -11,3 +11,6 @@ base:
     - pulseaudio
     - chromium
     - julia
+    - postgresql
+    - sqlite
+    - mutt
