@@ -1,16 +1,18 @@
 base:
   '*':
-    - core
-    - salt
-    - users
-    - pip
-    - vim
-    - urxvt
-    - xmonad
     - alsa
-    - pulseaudio
     - chromium
+    - core
     - julia
-    - postgresql
-    - sqlite
     - mutt
+    - pandoc
+    - pip
+    - postgresql
+    - pulseaudio
+    - salt
+    - sqlite
+    - urxvt
+    - users
+    - vim
+    - xmonad
+    - xorg

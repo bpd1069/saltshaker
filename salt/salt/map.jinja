@@ -31,10 +31,6 @@
 {## Start with  defaults from defaults.yaml ##}
 {% import_yaml "salt/defaults.yaml" as default_settings %}
 
-{##
-Setup variable using grains['os_family'] based logic, only add key:values here
-that differ from whats in defaults.yaml
-##}
 {% set osrelease = salt['grains.get']('osrelease') %}
 {% set os_family_map = salt['grains.filter_by']({
     'Debian':  {

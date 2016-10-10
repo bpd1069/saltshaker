@@ -1,5 +1,3 @@
-# vim: ft=yaml
-
 {% if grains['os'] == 'Ubuntu' %}
 alsa-base:
   pkg.installed

@@ -1,4 +1,5 @@
 # vim: ft=yaml
 
-mutt:
-  pkg.installed: []
+mutt-installed:
+  pkg.installed:
+    - pkgs: [ mutt ]
