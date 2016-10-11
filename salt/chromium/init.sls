@@ -8,3 +8,5 @@ chromium-installed:
     - name: 'chromium'
 {% endif%}
 
+include:
+  - chromium.flash

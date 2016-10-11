@@ -5,3 +5,4 @@ xmonad:
   xmobar_pkg: xmobar
   xmonad_dev_pkg: []
   extensions_pkg: []
+  dmenu_pkg: dmenu

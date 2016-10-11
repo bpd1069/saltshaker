@@ -17,4 +17,5 @@ xmonad-extensions-installed:
     - pkg: xmonad-installed
 
 include:
- - xmonad.xmobar
+  - xmonad.xmobar
+  - xmonad.dmenu
