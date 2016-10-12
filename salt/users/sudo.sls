@@ -23,5 +23,7 @@ users_sudoer-defaults:
           - pkg: users_sudo-package
         - text:
           - Defaults   env_reset
+          - Defaults   env_keep+=HOME
           - Defaults   secure_path="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+          - Defaults   !always_set_home, !set_home
           - '#includedir {{ users.sudoers_dir }}'

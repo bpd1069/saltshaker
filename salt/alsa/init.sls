@@ -1,12 +1,11 @@
-{% if grains['os'] == 'Ubuntu' %}
-alsa-base:
-  pkg.installed
+alsa-installed:
+  pkg.installed:
+{% if grains['os_family'] == 'Debian' %}
+    - name: alsa-base
+{% elif grains['os'] == 'Arch' %}
+    - name: alsa-plugins
 {% endif %}
 
-{% if grains['os'] == 'Arch' %}
-alsa-plugins:
-  pkg.installed
-{% endif %}
-
-alsa-utils:
-  pkg.installed
+alsa-utils-installed:
+  pkg.installed:
+    - name: alsa-utils

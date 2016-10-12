@@ -9,6 +9,7 @@ base:
     - pip
     - postgresql
     - pulseaudio
+    - redshift
     - salt
     - sqlite
     - urxvt
