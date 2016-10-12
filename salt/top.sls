@@ -2,8 +2,10 @@ base:
   '*':
     - alsa
     - chromium
+    - clang
     - core
     - julia
+    - llvm
     - mutt
     - pandoc
     - pip
