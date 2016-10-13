@@ -4,6 +4,7 @@ base:
     - chromium
     - clang
     - core
+    - gdb
     - julia
     - llvm
     - mutt
