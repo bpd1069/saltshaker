@@ -7,6 +7,7 @@ base:
     - julia
     - llvm
     - mutt
+    - nasm
     - pandoc
     - pip
     - postgresql
