@@ -18,6 +18,8 @@ base:
     - sqlite
     - urxvt
     - users
+    - vagrant
     - vim
+    - virtualbox
     - xmonad
     - xorg
