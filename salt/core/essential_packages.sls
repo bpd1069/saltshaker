@@ -4,6 +4,7 @@ essential_packages:
       - bash
       - git
       - curl
+      - expect
 {% if grains['os'] == 'Ubuntu' %}
       - python-software-properties
       - build-essential

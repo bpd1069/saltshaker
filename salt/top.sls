@@ -9,6 +9,7 @@ base:
     - llvm
     - mutt
     - nasm
+    - ncurses
     - pandoc
     - pip
     - postgresql
