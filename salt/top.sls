@@ -1,6 +1,7 @@
 base:
   '*':
     - alsa
+    - bc
     - chromium
     - clang
     - core
