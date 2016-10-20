@@ -31,4 +31,4 @@ avr-simulator-installed:
     - name: simulavr
 
 #include:
-#  - hardware.avr.arduino
+#  - avr-toolchain.arduino

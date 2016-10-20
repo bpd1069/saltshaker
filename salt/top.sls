@@ -1,12 +1,12 @@
 base:
   '*':
     - alsa
+    - avr-toolchain
     - bc
     - chromium
     - clang
     - core
     - gdb
-    - hardware
     - julia
     - llvm
     - mutt
