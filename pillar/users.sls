@@ -15,7 +15,7 @@ users:
     shell: /bin/bash
     remove_groups: False
     prime_group:
-      name: luke
+      name: ljk
     groups:
       - users
       - uucp
