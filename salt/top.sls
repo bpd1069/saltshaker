@@ -5,6 +5,7 @@ base:
     - clang
     - core
     - gdb
+    - hardware
     - julia
     - llvm
     - mutt

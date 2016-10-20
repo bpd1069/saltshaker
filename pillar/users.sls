@@ -1,8 +1,8 @@
 users:
-  luke:
+  ljk:
     fullname: Lucas Kolstad
     enforce_password: True
-    home: /home/luke
+    home: /home/ljk
     system: false
     user_dir_mode: 750
     createhome: True
@@ -18,6 +18,8 @@ users:
       name: luke
     groups:
       - users
+      - uucp
+      - lock
 
     ssh_key_type: rsa
     ssh_config:

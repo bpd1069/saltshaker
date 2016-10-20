@@ -1,0 +1,2 @@
+include:
+  - hardware.avr.init

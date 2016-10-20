@@ -19,29 +19,24 @@ xorg-fonts-installed:
     - pkgs: [ xorg-installed ]
 
 
+{% if grains['os_family'] == 'Debian' %}
 xorg-dev-installed:
   pkg.installed:
-{% if grains['os_family'] == 'Debian' %}
     - pkgs: [ xorg-dev ]
-{% endif %}
-    - pkgs: []
   require:
     - pkgs: [ xorg-installed ]
+{% endif %}
 
+{% if grains['os'] == 'Arch' %}
 xorg-extensions-installed:
   pkg.installed:
-{% if grains['os'] == 'Arch' %}
     - pkgs: [ xorg-server-utils ]
-{% endif %}
-    - pkgs: []
   require:
     - pkgs: [ xorg-installed ]
 
 xorg-xinit-installed:
   pkg.installed:
-{% if grains['os'] == 'Arch' %}
     - pkgs: [ xorg-xinit ]
-{% endif %}
-    - pkgs: []
   require:
     - pkgs: [ xorg-installed ]
+{% endif %}
