@@ -7,6 +7,7 @@ base:
     - clang
     - core
     - gdb
+    - hosts
     - julia
     - llvm
     - mutt
