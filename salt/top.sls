@@ -6,6 +6,7 @@ base:
     - chromium
     - clang
     - core
+    - dotfiles
     - gdb
     - hosts
     - julia
