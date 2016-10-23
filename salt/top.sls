@@ -14,6 +14,7 @@ base:
     - mutt
     - nasm
     - ncurses
+    - ninja
     - pandoc
     - pip
     - postgresql
