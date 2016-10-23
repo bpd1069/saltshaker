@@ -39,5 +39,5 @@ users:
 
     gitconfig:
       user.name: lucaskolstad
-      user.email: lkolstad@uw.com
+      user.email: lkolstad@uw.edu
       url."https://".insteadOf: "git://"
