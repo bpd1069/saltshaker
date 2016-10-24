@@ -140,6 +140,16 @@ users_{{ name }}_user:
       - group: {{ group }}
       {% endfor %}
 
+users_config_dir_{{ name }}:
+  file.directory:
+    - name: {{ home }}/.config
+    - user: {{ name }}
+    - group: {{ user_group }}
+    - mode: 640
+    - require:
+      - user: users_{{ name }}_user
+      - group: {{ user_group }}
+
 
   {% if 'ssh_keys' in user or
       'ssh_auth' in user or
@@ -296,6 +306,7 @@ users_ssh_config_{{ name }}:
           {%- endfor %}
         {% endfor -%}
 {% endif %}
+
 
 {% if 'ssh_known_hosts' in user %}
 {% for hostname, host in user['ssh_known_hosts'].items() %}
@@ -460,3 +471,4 @@ users_absent_group_{{ group }}:
   group.absent:
     - name: {{ group }}
 {% endfor %}
+
