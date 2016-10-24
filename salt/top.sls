@@ -8,6 +8,8 @@ base:
     - core
     - dotfiles
     - gdb
+    - geoclue
+    - git
     - hosts
     - julia
     - llvm

@@ -2,7 +2,6 @@ essential_packages:
   pkg.installed:
     - pkgs:
       - bash
-      - git
       - curl
       - expect
 {% if grains['os'] == 'Ubuntu' %}
