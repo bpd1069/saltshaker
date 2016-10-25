@@ -8,6 +8,7 @@ base:
     - core
     - cron
     - dotfiles
+    - doxygen
     - gdb
     - git
     - hosts

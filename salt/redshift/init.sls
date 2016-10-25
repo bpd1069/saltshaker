@@ -16,7 +16,7 @@ redshift-ljk-configured:
 
 redshift-cron-entry-exists:
   cron.present:
-    - name: redshift -l 48:-122 -c /home/ljk/.config/redshift.conf -o
+    - name: redshift -l 47.6:-122.3 -c /home/ljk/.config/redshift.conf -o
     - identifier: REDSHIFT
     - user: ljk
     - minute: '*/5'
