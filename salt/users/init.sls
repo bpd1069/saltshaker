@@ -145,7 +145,7 @@ users_config_dir_{{ name }}:
     - name: {{ home }}/.config
     - user: {{ name }}
     - group: {{ user_group }}
-    - mode: 640
+    - mode: 755
     - require:
       - user: users_{{ name }}_user
       - group: {{ user_group }}
