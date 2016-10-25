@@ -6,9 +6,9 @@ base:
     - chromium
     - clang
     - core
+    - cron
     - dotfiles
     - gdb
-    - geoclue
     - git
     - hosts
     - julia
@@ -24,6 +24,7 @@ base:
     - redshift
     - salt
     - sqlite
+    - tree
     - urxvt
     - users
     - vagrant

@@ -1,32 +1,28 @@
 include:
-  - geoclue
+  - cron
 
 redshift-installed:
   pkg.installed:
     - name: redshift
-    - requires:
-      pkg: geoclue-installed
 
-redshift-configured:
+redshift-ljk-configured:
   file.managed:
     - name: /home/ljk/.config/redshift.conf
     - source:
       - salt://redshift/files/redshift.conf
     - user: ljk
     - group: ljk
-    - file_mode: 750
-
-redshift-service:
-  service.running:
-    - name: redshift
-    - enable: true
+    - file_mode: 755
     - require:
-      - redshift-unit-file-installed
+      - redshift-installed
 
-redshift-unit-file-installed:
-  file.managed:
-    - name: /etc/systemd/system/redshift.service
-    - source:
-      - salt://redshift/files/redshift.service
+redshift-cron-entry-exists:
+  cron.present:
+    - name: redshift -l 48:-122 -c /home/ljk/.config/redshift.conf -o
+    - identifier: REDSHIFT
     - user: ljk
-    - group: ljk
+    - minute: '*/5'
+    - require:
+      - redshift-installed
+      - redshift-ljk-configured
+      - crontab-exists-ljk
