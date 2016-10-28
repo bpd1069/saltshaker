@@ -8,8 +8,8 @@ download-ljk-dotfiles:
 # are there, we don't wanna overwrite anything automatically.
 install-ljk-dotfiles:
   cmd.run:
-    - name: bash /home/ljk/dotfiles/deploy.sh
+    - name: bash /home/ljk/dotfiles/deploy.sh ljk
     - creates: /home/ljk/.lib
-    - runas: ljk
+    - runas: root
     - requires:
       - pkg: download-ljk-dotfiles

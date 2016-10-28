@@ -17,9 +17,36 @@ users:
     prime_group:
       name: ljk
     groups:
-      - users
-      - uucp
+# these are alphabetized
+      - adm
+      - audio
+      - cdrom
+      - dialout
+      - dip
+      - disk
+      - docker
+      - floppy
+      - ftp
+      - games
+      - http
+      - input
+      - kvm
       - lock
+      - log
+      - network
+      - optical
+      - plugdev
+      - sambashare
+      - scanner
+      - storage
+      - sudo
+      - sys
+      - tty
+      - users
+      - utmp
+      - uucp
+      - video
+      - wheel
 
     ssh_key_type: rsa
     ssh_config:

@@ -20,11 +20,12 @@ base:
     - ncurses
     - ninja
     - pandoc
+    - parted
     - pip
     - postgresql
     - pulseaudio
     - redshift
-    - salt
+    #- salt
     - sqlite
     - sudo
     - tree

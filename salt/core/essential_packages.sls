@@ -6,5 +6,6 @@ essential_packages:
       - expect
 {% if grains['os'] == 'Ubuntu' %}
       - python-software-properties
+      - software-properties-common
       - build-essential
 {% endif %}
