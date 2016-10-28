@@ -6,7 +6,7 @@ base:
     - chromium
     - clang
     - core
-    - cron
+    #- cron
     - docker
     - dotfiles
     - doxygen
