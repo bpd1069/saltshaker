@@ -25,6 +25,7 @@ base:
     - postgresql
     - pulseaudio
     - redshift
+    - rust
     #- salt
     - sqlite
     - sudoers

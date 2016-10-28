@@ -9,15 +9,11 @@ users:
     manage_vimrc: False
     manage_bashrc: False
     manage_profile: False
-    sudouser: True
-    sudo_defaults:
-      - '!requiretty'
     shell: /bin/bash
     remove_groups: False
     prime_group:
       name: ljk
     groups:
-# these are alphabetized
       - adm
       - audio
       - cdrom

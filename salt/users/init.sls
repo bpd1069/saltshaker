@@ -342,29 +342,6 @@ users_ssh_known_hosts_delete_{{ name }}_{{ loop.index0 }}:
 {% endif %}
 
 {% if 'sudouser' in user and user['sudouser'] %}
-
-users_sudoer-{{ name }}:
-  file.managed:
-    - replace: False
-    - name: {{ users.sudoers_dir }}/{{ name }}
-    - user: root
-    - group: {{ users.root_group }}
-    - mode: '0440'
-{% if 'sudo_rules' in user or 'sudo_defaults' in user %}
-#{#%
-{% if 'sudo_rules' in user %}
-{% for rule in user['sudo_rules'] %}
-"validate {{ name }} sudo rule {{ loop.index0 }} {{ name }} {{ rule }}":
-  cmd.run:
-    - name: 'visudo -cf - <<<"$rule" | { read output; if [[ $output != "stdin: parsed OK" ]] ; then echo $output ; fi }'
-    - stateful: True
-    - shell: {{ users.visudo_shell }}
-    - env:
-      # Specify the rule via an env var to avoid shell quoting issues.
-      - rule: "{{ name }} {{ rule }}"
-    - require_in:
-      - file: users_{{ users.sudoers_dir }}/{{ name }}
-{% endfor %}
 {% endif %}
 {% if 'sudo_defaults' in user %}
 {% for entry in user['sudo_defaults'] %}
@@ -381,40 +358,6 @@ users_sudoer-{{ name }}:
 {% endfor %}
 {% endif %}
 #%#}
-
-users_{{ users.sudoers_dir }}/{{ name }}:
-  file.managed:
-    - replace: True
-    - name: {{ users.sudoers_dir }}/{{ name }}
-    - contents: |
-      {%- if 'sudo_defaults' in user %}
-      {%- for entry in user['sudo_defaults'] %}
-        Defaults:{{ name }} {{ entry }}
-      {%- endfor %}
-      {%- endif %}
-      {%- if 'sudo_rules' in user %}
-        ########################################################################
-        # File managed by Salt (users-formula).
-        # Your changes will be overwritten.
-        ########################################################################
-        #
-      {%- for rule in user['sudo_rules'] %}
-        {{ name }} {{ rule }}
-      {%- endfor %}
-      {%- endif %}
-    - require:
-      - file: users_sudoer-defaults
-      - file: users_sudoer-{{ name }}
-  cmd.wait:
-    - name: visudo -cf {{ users.sudoers_dir }}/{{ name }} || ( rm -rvf {{ users.sudoers_dir }}/{{ name }}; exit 1 )
-    - watch:
-      - file: {{ users.sudoers_dir }}/{{ name }}
-{% endif %}
-{% else %}
-users_{{ users.sudoers_dir }}/{{ name }}:
-  file.absent:
-    - name: {{ users.sudoers_dir }}/{{ name }}
-{% endif %}
 
 {% if 'gitconfig' in user %}
 {% if not salt['cmd.has_exec']('git') %}

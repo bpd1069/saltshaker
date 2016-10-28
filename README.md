@@ -1,6 +1,6 @@
-# Salt Shaker
+# Saltshaker
 
-My own personal collection of salt files.
+My own personal collection of salt files and system bootstrapping scripts.
 
 ### Applying to the local system
 
@@ -18,8 +18,8 @@ to request more/different output.
 ### Compatibility
 
 This project is only regularly tested on my Arch and Ubuntu systems. Any other
-distributions probably won't work. When I encounter a new systems I do add
-fixes though.
+distributions probably won't work. When I encounter new systems I do add fixes
+though.
 
 ### Attribution & Licenses
 
