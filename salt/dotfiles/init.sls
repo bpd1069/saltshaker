@@ -5,7 +5,7 @@ download-ljk-dotfiles:
     - runas: ljk
 
 # This should only run if there are none of my dotfiles in place yet. If some
-# are there, we don't wanna overwrite anything automatically.
+# are there, we don't wanna overwrite anything automatically so let's just not.
 install-ljk-dotfiles:
   cmd.run:
     - name: bash /home/ljk/dotfiles/deploy.sh ljk

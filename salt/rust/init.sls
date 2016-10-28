@@ -1,14 +1,20 @@
+{% from "rust/map.jinja" import rust_settings with context %}
+
 rust-compiler-installed:
   pkg.installed:
-{% if grains['os_family'] == 'Debian' %}
-    - name: rustc
-{% elif grains['os'] == 'Arch' %}
-    - name: rust
-{% endif %}
+    - name: {{ rust_settings.rust_pkg }}
 
 cargo-installed:
   pkg.installed:
     - name: cargo
+    - require:
+      - rust-compiler-installed
+
+rust-debuggers-installed:
+  pkg.installed:
+    - pkgs: {{ rust_settings.debugger_pkgs }}
+    - require:
+      - rust-compiler-installed
 
 racer-autocomplete-installed:
   cmd.run:
@@ -19,12 +25,10 @@ racer-autocomplete-installed:
       - rust-compiler-installed
       - cargo-installed
 
-{% if grains['os_family'] == 'Debian' %}
-rust-lldb-installed:
-  pkg.installed:
-    - name: rust-lldb
-
-rust-gdb-installed:
-  pkg.installed:
-    - name: rust-lldb
-{% endif %}
+rust-symlink-created:
+  file.symlink:
+    - name: /usr/bin/rust
+    - target: /usr/bin/{{ rust_settings.rust_pkg }}
+    - mode: 755
+    - require: 
+      - rust-compiler-installed
