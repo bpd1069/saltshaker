@@ -28,6 +28,30 @@ check_if_root() {
   fi
 }
 
+# Only to be run AFTER salt applies the highstate, as it expects my user's
+# presence on the system.
+ljk_password_check() {
+  password_status="$(passwd -S ljk | grep -o NP)"
+
+  # if no password is set
+  if [ ! -z $password_status ]; then
+    printf "\n\n\n"
+    printf "##############################################################\n"
+    printf "            No password is set for the ljk user!\n"
+    printf "\n"
+    sudo -u ljk passwd ljk
+    if [ $? -ne 0 ]; then
+      exit 1
+    fi
+    printf "\n\n"
+    printf "            The new password was successfully set.\n"
+    printf "##############################################################\n"
+  fi
+}
+
 check_if_root
 override_local_salt_files
 apply_salt_highstate $@
+
+# Check that things must be done by hand are completed now, after running salt
+ljk_password_check

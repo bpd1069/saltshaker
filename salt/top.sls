@@ -7,6 +7,7 @@ base:
     - clang
     - core
     - cron
+    - docker
     - dotfiles
     - doxygen
     - gdb
@@ -25,6 +26,7 @@ base:
     - redshift
     - salt
     - sqlite
+    - sudo
     - tree
     - urxvt
     - users
