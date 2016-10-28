@@ -27,7 +27,7 @@ base:
     - redshift
     #- salt
     - sqlite
-    - sudo
+    - sudoers
     - tree
     - urxvt
     - users
