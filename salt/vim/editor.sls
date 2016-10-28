@@ -1,6 +1,6 @@
 {% if grains['os_family'] == 'Debian' %}
 include:
-  - vim.vim
+  - vim
 
 editor:
   alternatives.install:

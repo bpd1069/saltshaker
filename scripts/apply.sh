@@ -5,8 +5,8 @@
 APPLY_DIR="$(dirname $BASH_SOURCE)"
 
 override_local_salt_files() {
-  rsync -av $APPLY_DIR/salt/ /srv/salt > /dev/null 2>&1
-  rsync -av $APPLY_DIR/pillar/ /srv/pillar > /dev/null 2>&1
+  rsync -av --delete $APPLY_DIR/../salt/ /srv/salt > /dev/null 2>&1
+  rsync -av --delete $APPLY_DIR/../pillar/ /srv/pillar > /dev/null 2>&1
 }
 
 apply_salt_highstate() {
@@ -14,7 +14,6 @@ apply_salt_highstate() {
 }
 
 apply_saltshaker() {
-  ensure_salt_is_installed
   override_local_salt_files
   apply_salt_highstate
 }

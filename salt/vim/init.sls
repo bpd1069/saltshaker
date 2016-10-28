@@ -1,3 +1,9 @@
+{% from "vim/map.jinja" import vim with context %}
+
+vim-installed:
+  pkg.installed:
+    - name: {{ vim.pkg }}
+
 include:
-  - vim.vim
   - vim.editor
+  - vim.plugins
