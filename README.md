@@ -1,15 +1,11 @@
 # Saltshaker
 
-My own personal collection of salt files and system bootstrapping scripts.
+My own personal collection of salt files and system setup scripts.
 
 ### Applying to the local system
 
 Ensure you have salt installed. Then just download this repository somewhere
 and call the `deploy.sh` script as root.
-
-The deployment script will erase any other salt data in your `/srv/` directory,
-so be careful, and will place this repository's salt data there. Then it will
-try to apply the state to the local machine using masterless mode.
 
 You can pass arguments to the deployment script which will be appended to a
 call to: `salt-call state.apply --state_verbose=false --local` and can be used
