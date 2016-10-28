@@ -19,8 +19,7 @@ require_running_as_root() {
 }
 
 find_default_gateway() {
-  gateway_line="$(ip r | head -n 1)"
-  awk -F/n '{print $3}' $gateway_line
+  return "$(ip r | grep default | awk -F ' ' '{print $3}')"
 }
 
 ping_test() {
