@@ -1,34 +1,16 @@
-{% from "rust/map.jinja" import rust_settings with context %}
+include:
+  - core.essential_packages
 
-rust-compiler-installed:
-  pkg.installed:
-    - name: {{ rust_settings.rust_pkg }}
-
-cargo-installed:
-  pkg.installed:
-    - name: cargo
-    - require:
-      - rust-compiler-installed
-
-rust-debuggers-installed:
-  pkg.installed:
-    - pkgs: {{ rust_settings.debugger_pkgs }}
-    - require:
-      - rust-compiler-installed
-
-racer-autocomplete-installed:
+install-with-rustup:
   cmd.run:
-    - name: cargo install racer
-    - onlyif: [ ! -e /home/ljk/.cargo/bin/racer ]
-    - runas: ljk
+    - name: curl -sSf https://static.rust-lang.org/rustup.sh > /tmp/rustup.sh ; sh /tmp/rustup.sh -y
+    - onlyif: [ ! -z $(command -v rustup) ]
     - require:
-      - rust-compiler-installed
-      - cargo-installed
+      - essential_packages
 
-rust-symlink-created:
-  file.symlink:
-    - name: /usr/bin/rust
-    - target: /usr/bin/{{ rust_settings.rust_pkg }}
+rust-source-installed:
+  cmd.run:
+    - name: git clone https://github.com/rust-lang/rust /usr/local/src/rust
+    - creates: /usr/local/src/rust
+    - runas: root
     - mode: 755
-    - require: 
-      - rust-compiler-installed

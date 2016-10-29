@@ -1,6 +1,6 @@
 # vim: ft=yaml
 
-{% if grains['os'] == 'Ubuntu' %}
+{% if grains['os_family'] == 'Debian' %}
 pulseaudio:
   pkg.installed: []
 {% endif %}

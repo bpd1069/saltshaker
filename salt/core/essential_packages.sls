@@ -4,7 +4,7 @@ essential_packages:
       - bash
       - curl
       - expect
-{% if grains['os'] == 'Ubuntu' %}
+{% if grains['os_family'] == 'Debian' %}
       - python-software-properties
       - software-properties-common
       - build-essential
