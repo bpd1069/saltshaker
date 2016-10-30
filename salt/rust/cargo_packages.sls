@@ -3,11 +3,11 @@ include:
 
 racer-autocomplete-installed:
   cmd.run:
-    - name: cargo install -q racer
+    - name: cargo install racer
     - onlyif: [ ! -z $(command -v racer) ]
     - runas: ljk
     - require:
-      - rust-compiler-installed
+      - rust-installed
       - cargo-installed
 
 rustfmt-installed:
@@ -16,5 +16,5 @@ rustfmt-installed:
     - onlyif: [ ! -z $(command -v rustfmt) ]
     - runas: ljk
     - require:
-      - rust-compiler-installed
+      - rust-installed
       - cargo-installed

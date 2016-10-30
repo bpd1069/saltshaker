@@ -1,16 +1,27 @@
 include:
   - core.essential_packages
 
-install-with-rustup:
+rust-installed:
   cmd.run:
-    - name: curl -sSf https://static.rust-lang.org/rustup.sh > /tmp/rustup.sh ; sh /tmp/rustup.sh -y
+    - name: curl -sSf https://sh.rustup.rs | sh -s -- -y
     - onlyif: [ ! -z $(command -v rustup) ]
     - require:
       - essential_packages
 
+rustup-bash-completion-installed:
+  cmd.run:
+    - name: /home/ljk/.cargo/bin/rustup completions bash > /etc/bash_completion.d/rustup.bash_completion
+    - creates: /etc/bash_completion.d/rustup.bash_completion
+    - require:
+      - rust-installed
+
 rust-source-installed:
   cmd.run:
-    - name: git clone https://github.com/rust-lang/rust /usr/local/src/rust
-    - creates: /usr/local/src/rust
-    - runas: root
-    - mode: 755
+    - name: /home/ljk/.cargo/bin/rustup component add rust-src
+{% if grains['os'] == 'FreeBSD' %}
+    - creates: /home/ljk/.multirust/toolchains/stable-x86_64-unknown-freebsd/lib/rustlib/src/rust/src
+{% else %}
+    - creates: /home/ljk/.multirust/toolchains/stable-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/src
+{% endif %}
+    - runas: ljk
+    - mode: 750
