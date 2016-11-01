@@ -25,13 +25,27 @@ ensure_salt_is_installed() {
 
     # This will leave a 'tmp/bootstrap-salt.log' file you can lookat
     curl -L https://bootstrap.saltstack.com -o /tmp/bootstrap_salt.sh
-    sh tmp/bootstrap_salt.sh -D -X -F -q
-    rm tmp/bootstrap_salt.sh
+    sh /tmp/bootstrap_salt.sh -D -X -F -q
+    rm /tmp/bootstrap_salt.sh
+  fi
+}
+
+ensure_rsync_is_installed() {
+  if ! command_exists rsync ; then
+    pacman -S rsync --noconfirm
+  fi
+}
+
+ensure_git_is_installed() {
+  if ! command_exists rsync ; then
+    pacman -S git --noconfirm
   fi
 }
 
 # This is what is actually called in the deploy scripts
 bootstrap_system() {
   require_connected_to_internet
+  ensure_rsync_is_installed
+  ensure_git_is_installed
   ensure_salt_is_installed
 }
