@@ -10,6 +10,7 @@ base:
     - docker
     - dotfiles
     - doxygen
+    - emacs
     - gdb
     - git
     - hosts

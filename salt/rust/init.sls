@@ -4,7 +4,8 @@ include:
 rust-installed:
   cmd.run:
     - name: curl -sSf https://sh.rustup.rs | sh -s -- -y
-    - onlyif: [ ! -z $(command -v rustup) ]
+    - onlyif: [ -z "$(command -v rustup)" ]
+    - runas: ljk
     - require:
       - essential_packages
 
@@ -14,6 +15,7 @@ rustup-bash-completion-installed:
     - creates: /etc/bash_completion.d/rustup.bash_completion
     - require:
       - rust-installed
+      - bash-completions-dir-exists
 
 rust-source-installed:
   cmd.run:
@@ -23,5 +25,9 @@ rust-source-installed:
 {% else %}
     - creates: /home/ljk/.multirust/toolchains/stable-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/src
 {% endif %}
-    - runas: ljk
     - mode: 750
+
+bash-completions-dir-exists:
+  file.directory:
+    - name: /etc/bash_completion.d
+    - makedirs: True
