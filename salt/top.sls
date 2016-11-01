@@ -10,9 +10,11 @@ base:
     - docker
     - dotfiles
     - doxygen
+    - emacs
     - gdb
     - git
     - hosts
+    - jq
     - julia
     - llvm
     - mutt
