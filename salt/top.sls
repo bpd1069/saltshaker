@@ -16,6 +16,7 @@ base:
     - hosts
     - jq
     - julia
+    - lisp
     - llvm
     - mutt
     - nasm

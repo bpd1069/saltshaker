@@ -59,8 +59,3 @@ users:
           - "TCPKeepAlive yes"
           - "ServerAliveInterval 20"
           - "ServerAliveCountMax 10"
-
-    gitconfig:
-      user.name: lucaskolstad
-      user.email: lkolstad@uw.edu
-      url."https://".insteadOf: "git://"
