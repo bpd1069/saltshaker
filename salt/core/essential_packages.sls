@@ -1,8 +1,9 @@
-essential_packages:
+essential-packages:
   pkg.installed:
     - pkgs:
       - bash
       - curl
+      - wget
       - expect
 {% if grains['os_family'] == 'Debian' %}
       - python-software-properties

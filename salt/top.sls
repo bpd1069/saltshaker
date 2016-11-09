@@ -18,6 +18,7 @@ base:
     - julia
     - lisp
     - llvm
+    - mail
     - mutt
     - nasm
     - ncurses
@@ -40,3 +41,4 @@ base:
     - virtualbox
     - xmonad
     - xorg
+    - youtube-dl

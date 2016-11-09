@@ -7,7 +7,7 @@ rust-installed:
     - onlyif: [ -z "$(command -v rustup)" ]
     - runas: ljk
     - require:
-      - essential_packages
+      - essential-packages
 
 rustup-bash-completion-installed:
   cmd.run:

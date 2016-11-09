@@ -1,4 +1,13 @@
-# vim: ft=yaml
+postgresql-server-installed:
+  pkg.installed:
+    - name: postgresql
 
-postgresql:
-  pkg.installed: []
+{% if grains['os_family'] == 'Debian' %}
+postgresql-client-installed:
+  pkg.installed:
+    - name: postgresql-client
+
+postgresql-contrib-installed:
+  pkg.installed:
+    - name: postgresql-contrib
+{% endif %}
