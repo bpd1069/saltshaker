@@ -39,6 +39,7 @@ base:
     - vagrant
     - vim
     - virtualbox
+    - wicd
     - xmonad
     - xorg
     - youtube-dl

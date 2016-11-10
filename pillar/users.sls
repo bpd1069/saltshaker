@@ -30,6 +30,7 @@ users:
       - lock
       - log
       - network
+      - netdev
       - optical
       - plugdev
       - sambashare
