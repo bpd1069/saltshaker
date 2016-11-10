@@ -1,0 +1,8 @@
+{% set wicd = salt['grains.filter_by']({
+    'Arch': {
+        'pkgs': [ 'wicd' ],
+    },
+    'Debian': {
+        'pkgs': [ 'wicd-cli' 'wicd-curses' ],
+    },
+}, merge=salt['pillar.get']('vim:lookup')) %}
