@@ -23,6 +23,7 @@ base:
     - nasm
     - ncurses
     - ninja
+    - openssh
     - pandoc
     - parted
     - pip
