@@ -13,15 +13,6 @@ salt-minion:
     - exclude_pat: _*
     - context:
         standalone: False
-  service.running:
-    - enable: True
-    - name: {{ salt_settings.minion_service }}
-    - watch:
-{% if salt_settings.install_packages %}
-      - pkg: salt-minion
-{% endif %}
-      - file: salt-minion
-      - file: remove-old-minion-conf-file
 
 {% if salt_settings.minion_remove_config %}
 remove-default-minion-conf-file:

@@ -11,15 +11,6 @@ salt-master:
     - source: salt://{{ slspath }}/files/master.d
     - clean: {{ salt_settings.clean_config_d_dir }}
     - exclude_pat: _*
-  service.running:
-    - enable: True
-    - name: {{ salt_settings.master_service }}
-    - watch:
-{% if salt_settings.install_packages %}
-      - pkg: salt-master
-{% endif %}
-      - file: salt-master
-      - file: remove-old-master-conf-file
 
 {% if salt_settings.master_remove_config %}
 remove-default-master-conf-file:

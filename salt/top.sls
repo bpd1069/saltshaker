@@ -22,6 +22,7 @@ base:
     - mutt
     - nasm
     - ncurses
+    - network
     - ninja
     - openssh
     - pandoc
@@ -40,7 +41,6 @@ base:
     - vagrant
     - vim
     - virtualbox
-    - wicd
     - xmonad
     - xorg
     - youtube-dl
