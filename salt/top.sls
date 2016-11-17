@@ -5,12 +5,14 @@ base:
     - bc
     - chromium
     - clang
+    - cmus
     - core
     #- cron
     - docker
     - dotfiles
     - doxygen
     - emacs
+    - ffmpeg
     - gdb
     - git
     - hosts
