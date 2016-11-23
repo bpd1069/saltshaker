@@ -43,6 +43,7 @@ base:
     - vagrant
     - vim
     - virtualbox
+    - virtualenv
     - xmonad
     - xorg
     - youtube-dl

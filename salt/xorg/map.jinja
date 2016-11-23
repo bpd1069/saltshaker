@@ -1,0 +1,31 @@
+{% set xorg_settings = salt['grains.filter_by']({
+    'Arch': {
+        'xorg_pkg': [
+          'xorg-server',
+        ],
+        'xorg_fonts_pkg': [
+          'xorg-fonts-100dpi',
+        ],
+        'xorg_dev_pkg': [],
+        'xorg_extensions_pkgs': [
+          'xorg-server-utils',
+          'xorg-xinit'
+        ],
+    },
+    'Debian': {
+        'xorg_pkg': [
+          'xorg',
+        ],
+        'xorg_fonts_pkg': [
+          'xfonts-100dpi',
+        ],
+        'xorg_dev_pkg': [
+          'xorg-dev',
+        ],
+        'xorg_extensions_pkgs': [
+          'libx11-dev',
+          'libxinerama-dev',
+          'libxext-dev',
+        ],
+    },
+}, merge=salt['pillar.get']('xmonad:lookup')) %}
