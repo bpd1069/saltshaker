@@ -1,4 +1,5 @@
 # vim: ft=yaml
 
 sqlite:
-  pkg.installed: []
+  pkg.installed:
+    - name: sqlite

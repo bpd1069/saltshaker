@@ -1,4 +1,5 @@
 # vim: ft=yaml
 
 pandoc:
-  pkg.installed: []
+  pkg.installed:
+    - name: pandoc

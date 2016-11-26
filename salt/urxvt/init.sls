@@ -1,2 +1,3 @@
-rxvt-unicode:
-  pkg.installed: []
+rxvt-unicode-installed:
+  pkg.installed:
+    - name: rxvt-unicode

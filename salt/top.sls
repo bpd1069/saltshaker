@@ -4,10 +4,11 @@ base:
     - avr-toolchain
     - bc
     - chromium
+    - clamav
     - clang
     - cmus
     - core
-    #- cron
+    - cron
     - docker
     - dotfiles
     - doxygen
@@ -34,7 +35,7 @@ base:
     - pulseaudio
     - redshift
     - rust
-    #- salt
+    - salt
     - sqlite
     - sudoers
     - tree
