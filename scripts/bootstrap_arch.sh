@@ -37,7 +37,7 @@ ensure_rsync_is_installed() {
 }
 
 ensure_git_is_installed() {
-  if ! command_exists rsync ; then
+  if ! command_exists git ; then
     pacman -S git --noconfirm
   fi
 }

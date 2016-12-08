@@ -38,6 +38,7 @@ base:
     - salt
     - sqlite
     - sudoers
+    - tops
     - tree
     - urxvt
     - users

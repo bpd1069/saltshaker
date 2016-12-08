@@ -9,6 +9,7 @@ download-ljk-dotfiles:
 install-ljk-dotfiles:
   cmd.run:
     - name: bash /home/ljk/dotfiles/deploy.sh ljk
+    # I should rethink doing it this way with .lib instead of a better indicator
     - creates: /home/ljk/.lib
     - runas: root
     - requires:
