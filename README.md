@@ -2,10 +2,16 @@
 
 My own personal collection of salt files and system setup scripts.
 
+These are used on my everyday dev systems that want all my desktop apps as well
+as many dev tools installed by default. Salt is used to improve portability of
+the configuration management across a variety of Unix style platforms.
+
 ### Applying to the local system
 
-Ensure you have salt installed. Then just download this repository somewhere
-and call the `deploy.sh` script as root.
+Download this repository somewhere and call the `deploy.sh` script as root.
+
+This will attempt to bootstrap up to a state where salt can be run, then will
+apply the salt configuration on the localhost.
 
 You can pass arguments to the deployment script which will be appended to a
 call to: `salt-call state.apply --state_verbose=false --local` and can be used

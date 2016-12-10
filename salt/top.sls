@@ -1,5 +1,6 @@
 base:
-  '*':
+# my private laptop has the whole kitchen sink
+  'lodd':
     - alsa
     - avr-toolchain
     - bc
@@ -16,7 +17,9 @@ base:
     - ffmpeg
     - gdb
     - git
+    - go
     - hosts
+    - inkscape
     - jq
     - julia
     - lisp
@@ -27,6 +30,7 @@ base:
     - ncurses
     - network
     - ninja
+    - node
     - openssh
     - pandoc
     - parted
@@ -38,6 +42,7 @@ base:
     - salt
     - sqlite
     - sudoers
+    - swig
     - tops
     - tree
     - urxvt
