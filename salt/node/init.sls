@@ -1,9 +1,9 @@
-{% set pillar_get = salt['pillar.get'] -%}
-include:
-{%- if pillar_get('node:install_from_source') %}
-  - .source
-{%- elif pillar_get('node:install_from_binary') %}
-  - .binary
-{%- else %}
-  - .pkg
-{%- endif %}
+node-installed:
+  pkg.installed:
+    - name: nodejs
+
+nodejs-to-node-rename:
+  cmd.run:
+    - name: ln -s /usr/bin/nodejs /usr/local/bin/node
+    - creates: /usr/local/bin/node
+    - runas: root

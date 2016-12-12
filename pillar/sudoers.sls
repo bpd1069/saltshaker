@@ -13,7 +13,8 @@ sudoers:
       - mail_badpass
       - secure_path="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
       - env_keep+=HOME
-      - !always_set_home, !set_home
+      - '!always_set_home'
+      - '!set_home'
     user_list:
       ljk: '!requiretty'
   includedir: /etc/sudoers.d

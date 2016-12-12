@@ -1,5 +1,7 @@
 base:
   '*':
-    - users
-    - salt
+    - openssh
     - pip
+    - salt
+    - sudoers
+    - users

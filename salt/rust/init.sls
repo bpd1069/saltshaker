@@ -1,5 +1,5 @@
 include:
-  - core.essential_packages
+  - curl
 
 rust-installed:
   cmd.run:
@@ -7,7 +7,7 @@ rust-installed:
     - onlyif: [ -z "$(command -v rustup)" ]
     - runas: ljk
     - require:
-      - essential-packages
+      - curl
 
 rustup-bash-completion-installed:
   cmd.run:

@@ -8,12 +8,14 @@ base:
     - clamav
     - clang
     - cmus
-    - core
     - cron
+    - curl
+    - debianpkging
     - docker
     - dotfiles
     - doxygen
     - emacs
+    - expect
     - ffmpeg
     - gdb
     - git
@@ -24,6 +26,7 @@ base:
     - julia
     - lisp
     - llvm
+    - locale
     - mail
     - mutt
     - nasm
@@ -34,16 +37,18 @@ base:
     - openssh
     - pandoc
     - parted
+    - perftools
+    - perl
     - pip
     - postgresql
     - pulseaudio
+    - pypy
     - redshift
     - rust
     - salt
     - sqlite
     - sudoers
     - swig
-    - tops
     - tree
     - urxvt
     - users
@@ -51,6 +56,7 @@ base:
     - vim
     - virtualbox
     - virtualenv
+    - wget
     - xmonad
     - xorg
     - youtube-dl
