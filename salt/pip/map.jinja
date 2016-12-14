@@ -1,27 +1,31 @@
 {% set pip = salt['grains.filter_by']({
     'Debian': {
-        'pip_pkg': 'python-pip',
+        'pip_pkg': [
+          'python-pip',
+          'python3-pip',
+        ],
         'dev_pkgs': [
           'build-essential',
           'python-dev',
+          'python3-dev',
         ],
     },
     'RedHat': {
-        'pip_pkg': 'python-pip',
+        'pip_pkg': ['python-pip'],
         'dev_pkgs': [
           'gcc',
           'python-devel',
         ],
     },
     'Arch': {
-        'pip_pkg': 'python-pip',
+        'pip_pkg': ['python-pip'],
         'dev_pkgs': [
           'gcc',
           'python-devel',
         ],
     },
     'Gentoo': {
-        'pip_pkg': 'dev-python/pip',
+        'pip_pkg': ['dev-python/pip'],
         'dev_pkgs': [
           'sys-devel/gcc',
           'dev-lang/python',

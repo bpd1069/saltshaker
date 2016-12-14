@@ -34,6 +34,7 @@ base:
     - network
     - ninja
     - node
+    - nvim
     - openssh
     - pandoc
     - parted
@@ -53,10 +54,10 @@ base:
     - urxvt
     - users
     - vagrant
-    - vim
     - virtualbox
     - virtualenv
     - wget
+    - xclip
     - xmonad
     - xorg
     - youtube-dl
