@@ -2,4 +2,4 @@
 
 pip:
   pkg.installed:
-    - pkgs: {{ pip.pip_pkg }}
+    - name: {{ pip.pip_pkg }}
