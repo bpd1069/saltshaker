@@ -21,12 +21,14 @@ base:
     - git
     - go
     - hosts
+    - imagemagick
     - inkscape
     - jq
     - julia
     - lisp
     - llvm
     - locale
+    - lua
     - mail
     - mutt
     - nasm
