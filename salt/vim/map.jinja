@@ -1,38 +1,26 @@
 {% set vim = salt['grains.filter_by']({
     'Arch': {
         'pkg': 'vim',
-        'share_dir': '/usr/share/vim/vimfiles',
-        'group': 'root',
-        'config_root': '/etc',
+        'nvim_pkg': 'nvim',
     },
     'Debian': {
         'pkg': 'vim',
-        'share_dir': '/usr/share/vim/vimfiles',
-        'group': 'root',
-        'config_root': '/etc/vim',
+        'nvim_pkg': 'neovim',
     },
     'RedHat': {
         'pkg': 'vim-enhanced',
-        'share_dir': '/usr/share/vim/vimfiles',
-        'group': 'root',
-        'config_root': '/etc',
+        'nvim_pkg': 'nvim',
     },
     'Suse': {
         'pkg': 'vim',
-        'share_dir': '/usr/share/vim/site',
-        'group': 'root',
-        'config_root': '/etc',
+        'nvim_pkg': 'nvim',
     },
     'FreeBSD': {
         'pkg': 'vim',
-        'share_dir': '/usr/local/share/vim/vimfiles',
-        'group': 'wheel',
-        'config_root': '/etc',
+        'nvim_pkg': 'nvim',
         },
     'Gentoo': {
         'pkg': 'app-editors/vim',
-        'share_dir': '/usr/share/vim/vimfiles',
-        'group': 'wheel',
-        'config_root': '/etc',
+        'nvim_pkg': 'nvim',
     },
 }, merge=salt['pillar.get']('vim:lookup')) %}
