@@ -5,3 +5,6 @@ luajit-installed:
 lua-installed-for-luac:
   pkg.installed:
     - name: lua50
+
+include:
+  - lua.luarocks

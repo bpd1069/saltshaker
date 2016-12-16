@@ -20,14 +20,10 @@ neovim-python3-installed:
   pip.installed:
     - name: neovim
     - bin_env: '/usr/bin/pip3'
-    - requires:
-      - pkg: pip
 
 neovim-python-installed:
   pip.installed:
     - name: neovim
-    - requires:
-      - pkg: pip
 
 include:
   - vim.editor
