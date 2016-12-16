@@ -52,6 +52,7 @@ base:
     - sudoers
     - swig
     - tree
+    - trackpoint
     - urxvt
     - users
     - vagrant
