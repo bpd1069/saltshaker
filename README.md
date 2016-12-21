@@ -2,10 +2,6 @@
 
 My own personal collection of salt files and system setup scripts.
 
-These are used on my everyday dev systems that want all my desktop apps as well
-as many dev tools installed by default. Salt is used to improve portability of
-the configuration management across a variety of Unix style platforms.
-
 ### Applying to the local system
 
 Download this repository somewhere and call the `deploy.sh` script as root.

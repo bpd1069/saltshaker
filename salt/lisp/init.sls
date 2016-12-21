@@ -1,3 +1,4 @@
 include:
   - lisp.sbcl
-  - lisp.racket
+# - lisp.racket
+  - lisp.guile

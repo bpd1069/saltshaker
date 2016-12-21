@@ -1,3 +1,6 @@
+include:
+  - lua
+
 download-ljk-dotfiles:
   cmd.run:
     - name: git clone https://github.com/lucaskolstad/dotfiles/ /home/ljk/dotfiles
@@ -8,9 +11,12 @@ download-ljk-dotfiles:
 # are there, we don't wanna overwrite anything automatically so let's just not.
 install-ljk-dotfiles:
   cmd.run:
-    - name: bash /home/ljk/dotfiles/deploy.sh ljk
+    - name: luajit /home/ljk/dotfiles/deploy.lua
     # I should rethink doing it this way with .lib instead of a better indicator
     - creates: /home/ljk/.lib
     - runas: root
     - requires:
-      - pkg: download-ljk-dotfiles
+      - pkgs:
+        - download-ljk-dotfiles
+        - luajit-installed
+        - luaposix-installed
