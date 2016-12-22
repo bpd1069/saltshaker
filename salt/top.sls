@@ -11,6 +11,7 @@ base:
     - cron
     - curl
     - debianpkging
+    - dia
     - docker
     - dotfiles
     - doxygen
