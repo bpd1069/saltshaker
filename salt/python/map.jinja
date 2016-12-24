@@ -1,5 +1,7 @@
-{% set pip = salt['grains.filter_by']({
+{% set python = salt['grains.filter_by']({
     'Debian': {
+        'python2_pkg': 'python',
+        'python3_pkg': 'python3',
         'pip_pkg': 'python-pip',
         'dev_pkgs': [
           'build-essential',
@@ -7,6 +9,8 @@
         ],
     },
     'RedHat': {
+        'python2_pkg': 'python',
+        'python3_pkg': 'python3',
         'pip_pkg': 'python-pip',
         'dev_pkgs': [
           'gcc',
@@ -14,6 +18,8 @@
         ],
     },
     'Arch': {
+        'python2_pkg': 'python',
+        'python3_pkg': 'python3',
         'pip_pkg': 'python-pip',
         'dev_pkgs': [
           'gcc',
@@ -21,10 +27,12 @@
         ],
     },
     'Gentoo': {
+        'python2_pkg': 'python',
+        'python3_pkg': 'python3',
         'pip_pkg': 'dev-python/pip',
         'dev_pkgs': [
           'sys-devel/gcc',
           'dev-lang/python',
         ],
     },
-}, merge=salt['pillar.get']('pip:lookup')) %}
+}, merge=salt['pillar.get']('python:lookup')) %}

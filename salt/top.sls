@@ -6,7 +6,6 @@ base:
     - bc
     - chromium
     - clamav
-    - clang
     - cmus
     - cron
     - curl
@@ -14,13 +13,14 @@ base:
     - dia
     - docker
     - dotfiles
-    - doxygen
+    #- doxygen
     - emacs
     - expect
     - ffmpeg
     - gdb
     - git
     - go
+    - haskell
     - hosts
     - imagemagick
     - inkscape
@@ -38,20 +38,18 @@ base:
     - ninja
     - node
     - openssh
-    - pandoc
     - parted
     - perftools
     - perl
-    - pip
     - postgresql
     - pulseaudio
-    - pypy
+    - python
     - redshift
-    - rust
+    #- rust
     - salt
     - sqlite
     - sudoers
-    - swig
+    #- swig
     - tree
     - trackpoint
     - urxvt
@@ -59,7 +57,6 @@ base:
     - vagrant
     - vim
     - virtualbox
-    - virtualenv
     - wget
     - xmonad
     - xorg
