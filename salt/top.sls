@@ -1,13 +1,16 @@
 base:
-# my private laptop has the whole kitchen sink
+  '*':
+    - bash
+    - bc
+    - cron
+    - locale
+
   'lodd':
     - alsa
     - avr-toolchain
-    - bc
     - chromium
     - clamav
     - cmus
-    - cron
     - curl
     - debianpkging
     - dia
@@ -19,6 +22,7 @@ base:
     - ffmpeg
     - gdb
     - git
+    - gnutls
     - go
     - haskell
     - hosts
@@ -26,9 +30,9 @@ base:
     - inkscape
     - jq
     - julia
+    - latex
     - lisp
     - llvm
-    - locale
     - lua
     - mail
     - mutt
@@ -50,6 +54,7 @@ base:
     - sqlite
     - sudoers
     #- swig
+    - tar
     - tree
     - trackpoint
     - urxvt
@@ -60,4 +65,5 @@ base:
     - wget
     - xmonad
     - xorg
+    - xz
     - youtube-dl

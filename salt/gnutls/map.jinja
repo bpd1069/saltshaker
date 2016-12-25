@@ -1,0 +1,13 @@
+{% set gnutls_settings = salt['grains.filter_by']({
+  'Arch': {
+    'pkgs': [
+      'gnutls',
+    ]
+  },
+  'Debian': {
+    'pkgs': [
+      'libgnutls30',
+      'libgnutls-dev'
+    ]
+  },
+}, merge=salt['pillar.get']('latex:lookup')) %}
