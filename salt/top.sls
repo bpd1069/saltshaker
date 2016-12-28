@@ -7,13 +7,13 @@ base:
 
   'lodd':
     - alsa
-    - avr-toolchain
+    #- avr-toolchain
     - chromium
     - clamav
     - cmus
     - curl
     - debianpkging
-    - dia
+    #- dia
     - docker
     - dotfiles
     #- doxygen
@@ -28,6 +28,7 @@ base:
     - hosts
     - imagemagick
     - inkscape
+    - inotify
     - jq
     - julia
     - latex
@@ -49,7 +50,8 @@ base:
     - pulseaudio
     - python
     - redshift
-    #- rust
+    - ruby
+    - rust
     - salt
     - sqlite
     - sudoers
