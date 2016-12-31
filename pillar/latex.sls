@@ -4,3 +4,6 @@ latex:
     - amsmath
     - lipsum
     - geometry
+    - hyperref
+    - biblatex
+    - xcolor
