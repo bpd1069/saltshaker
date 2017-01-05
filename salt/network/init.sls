@@ -7,3 +7,7 @@ wpa_supplicant_installed:
   pkg.installed:
     - name: wpa_supplicant
 {% endif %}
+
+nmap-installed:
+  pkg.installed:
+    - name: nmap

@@ -21,7 +21,7 @@ TEXMF_DIR = p.expanduser("~/.texmf")
 def symlink_texlive_install_to_bin():
     texlive_binaries = glob.glob(p.join(LIVETEX_BIN_PATH, "*"))
     for binary in texlive_binaries:
-        new_bin_loc = p.join("/usr/local/bin", binary)
+        new_bin_loc = p.join("/usr/local/bin", os.path.basename(binary))
         if not p.exists(new_bin_loc):
             os.symlink(binary, new_bin_loc)
 

@@ -31,7 +31,6 @@ base:
     - inotify
     - jq
     - julia
-    - latex
     - lisp
     - llvm
     - lua
@@ -57,6 +56,7 @@ base:
     - sudoers
     #- swig
     - tar
+    - tex
     - tree
     - trackpoint
     - urxvt
