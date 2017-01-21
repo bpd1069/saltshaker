@@ -26,6 +26,7 @@ base:
     - go
     - haskell
     - hosts
+    - hub
     - imagemagick
     - inkscape
     - inotify
@@ -64,6 +65,7 @@ base:
     - vagrant
     - vim
     - virtualbox
+    - w3m
     - wget
     - xmonad
     - xorg
