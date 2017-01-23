@@ -3,7 +3,7 @@
 # This script does low level networking checks to ensure we can actually
 # download things.
 
-NETWORKING_DIR="$(dirname $BASH_SOURCE)"
+NETWORKING_DIR="$(cd $(dirname ${BASH_SOURCE[0]} ) && pwd)"
 source $NETWORKING_DIR/utils.sh
 
 find_default_gateway() {

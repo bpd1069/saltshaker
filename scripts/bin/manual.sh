@@ -1,11 +1,11 @@
 #!/usr/bin/env bash
 
-# This script contains all the functions which must be run after the salt
-# highstate has been applied. These prompt for all the stuff you must do
-# manually, such as setting passwords.
+# This script contains all the functions which must be run and handled manually
+# after the salt highstate has been applied. These prompt for all the stuff you
+# must do manually, such as setting passwords.
 
-MANUAL_DIR="$(dirname $BASH_SOURCE)"
-source $MANUAL_DIR/utils.sh
+MANUAL_DIR="$(cd $(dirname ${BASH_SOURCE[0]} ) && pwd)"
+source $MANUAL_DIR/../lib/utils.sh
 
 ljk_password_check() {
   require_running_as_root
@@ -31,3 +31,9 @@ ljk_password_check() {
     printf "##############################################################\n"
   fi
 }
+
+manual_things_to_do() {
+  ljk_password_check
+}
+
+manual_things_to_do

@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 
-BOOTSTRAP_DIR="$(dirname $BASH_SOURCE)"
-source $BOOTSTRAP_DIR/utils.sh
-source $BOOTSTRAP_DIR/networking.sh
+BOOTSTRAP_DIR="$(cd $(dirname ${BASH_SOURCE[0]} ) && pwd)"
+source $BOOTSTRAP_DIR/../lib/utils.sh
+source $BOOTSTRAP_DIR/../lib/networking.sh
 
 ensure_curl_is_installed() {
   if ! command_exists curl ; then
@@ -49,3 +49,5 @@ bootstrap_system() {
   ensure_git_is_installed
   ensure_salt_is_installed
 }
+
+bootstrap_system

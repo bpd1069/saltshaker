@@ -1,6 +1,30 @@
 #!/usr/bin/env bash
 
-# Miscellaneous bash functions used all over other scripts
+# Miscellaneous bash used all over other scripts
+
+_exit_handler() {
+  local err_code="$?"
+  test $err_code == 0 && return;
+
+  test -t 1 && tput bold && tput setf 4
+
+  printf "\n(!!!) BAD EXIT HANDLED:\n"
+  local script_name="$0"
+  printf "ERROR: ${script_name}: exit status of last command ${err_code}\n"
+
+  test -t 1 && tput sgr0
+  exit $err_code
+}
+
+setup_err_handling() {
+  set -o nounset
+  set -o pipefail
+  set -o errtrace
+  set -o errexit
+
+  trap "_exit_handler" EXIT
+  trap exit ERR
+}
 
 command_exists() {
   command -v "$1" > /dev/null 2>&1

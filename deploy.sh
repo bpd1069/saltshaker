@@ -1,27 +1,17 @@
 #!/usr/bin/env bash
 
-# This is the only script here that has any raw statements to execute.
-# Everything in the 'scripts' directory is just a library function that
-# supplies the primary operations initiated here.
+DEPLOY_DIR="$(cd $( dirname ${BASH_SOURCE[0]} )  && pwd )"
+source $DEPLOY_DIR/scripts/lib/utils.sh
 
-DEPLOY_DIR="$(dirname $BASH_SOURCE)"
-
-source $DEPLOY_DIR/scripts/utils.sh
-source $DEPLOY_DIR/scripts/networking.sh
-source $DEPLOY_DIR/scripts/bootstrap_arch.sh
-source $DEPLOY_DIR/scripts/apply.sh
-source $DEPLOY_DIR/scripts/manual.sh
-
-# Prerequisites that cannot be fixed and exit script if unmet
+# Set things up
+setup_err_handling
 require_running_as_root
-require_connected_to_internet
 
-# Automates the first time setup if needed
-bootstrap_system
-
-# Does the actual work of syncing the local machine to the salt states
-apply_saltshaker
-
-# Check that things that must be done by hand are completed now, after running
-# all that automated stuff
-ljk_password_check
+# Now run the independent steps to be completed:
+#    Get the system into a state where salt can run
+bash $DEPLOY_DIR/scripts/bin/bootstrap.sh
+#    Apply the salt states to the local machine
+bash $DEPLOY_DIR/scripts/bin/apply.sh
+#    Force the user to do the post-application, manual,
+#    interactive tasks like setting passwords.
+bash $DEPLOY_DIR/scripts/bin/manual.sh

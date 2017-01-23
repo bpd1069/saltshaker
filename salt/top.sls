@@ -60,6 +60,7 @@ base:
     - tex
     - tree
     - trackpoint
+    - unrar
     - urxvt
     - users
     - vagrant

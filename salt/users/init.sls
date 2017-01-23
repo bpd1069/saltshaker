@@ -55,7 +55,7 @@ users_{{ name }}_user:
     - name: {{ home }}
     - user: {{ name }}
     - group: {{ user_group }}
-    - mode: {{ user.get('user_dir_mode', '0750') }}
+    - mode: {{ user.get('user_dir_mode', '0755') }}
     - require:
       - user: users_{{ name }}_user
       - group: {{ user_group }}
