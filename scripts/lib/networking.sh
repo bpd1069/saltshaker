@@ -6,53 +6,48 @@
 NETWORKING_DIR="$(cd $(dirname ${BASH_SOURCE[0]} ) && pwd)"
 source $NETWORKING_DIR/utils.sh
 
+setup_err_handling
+
 find_default_gateway() {
   return "$(ip r | grep default | awk -F ' ' '{print $3}')"
 }
 
 ping_test() {
-  ping -q -w 1 -c 1 "$1" > /dev/null 2>&1
+  if command_exists ping ; then
+    if ping -q -w 1 -c 1 "$1" > /dev/null 2>&1 ; then
+      return 0
+    fi
+  fi
+  return 1
 }
 
 ping_default_gateway_test() {
   gateway="$(find_default_gateway)"
-  ping_test $gateway
+  if ping_test $gateway ; then
+    return 0
+  fi
+  return 1
 }
 
 ping_internet_test() {
-  ping_test http://google.com
+  if ping_test http://google.com ; then
+    return 0
+  fi
+  return 1
 }
 
 wget_internet_test() {
-  gateway="$(find_default_gateway)"
-  wget -q --tries=10 --timeout=10 --spider http://google.com
+  if command_exists wget ; then
+    if wget -q --tries=10 --timeout=10 --spider http://google.com > /dev/null 2>&1 ; then
+      return 0
+    fi
+  fi
+  return 1
 }
 
 require_connected_to_internet() {
-  if command_exists ping ; then
-    ping_internet_test
-    connected=$?
-  elif command_exists wget ; then
-    wget_internet_test
-    connected=$?
-  else
-    connected=false
+  if [[ ping_internet_test || wget_internet_test ]] ; then
+    return 0
   fi
-
-  if [ ! $connected ]; then
-    if command_exists ping ; then
-      ping_default_gateway_test
-      gateway_connected=$?
-    else
-      gateway_connected=false
-    fi
-    if [ $gateway_connected ]; then
-      printf "You are connected to your default gateway, but not the internet.\n"
-      exit 1
-    else
-      printf "You are not even connected to a default gateway as far as we can tell.\n"
-      exit 1
-    fi
-  fi
-  return 0
+  exit 1
 }

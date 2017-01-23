@@ -7,13 +7,11 @@ the whole kitchen sink is thrown in there. Languages, tools, as well as my own
 system configuration preferences that don't belong in my dotfiles (though the
 dotfiles themselves are automatically downloaded and installed by this project).
 
-Because this project targets just small one goal, assuring that my system
-setup doesn't drive me insane anymore, there is just one entry point and just
-one thing you can do: call `deploy.sh`.
-
 ### Applying to the local system
 
 Download this repository somewhere and call the `deploy.sh` script as root.
+
+You can see some options and explanation with the help option: `deploy -h`
 
 This will attempt to bootstrap up to a state where salt can be run then runs it
 to set up the localhost. This handles the case where you only managed to

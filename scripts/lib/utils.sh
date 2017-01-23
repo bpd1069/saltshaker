@@ -10,7 +10,7 @@ _exit_handler() {
 
   printf "\n(!!!) BAD EXIT HANDLED:\n"
   local script_name="$0"
-  printf "ERROR: ${script_name}: exit status of last command ${err_code}\n"
+  printf "ERROR: ${script_name}: at or near line $1 with exit status of ${err_code}\n"
 
   test -t 1 && tput sgr0
   exit $err_code
@@ -22,7 +22,7 @@ setup_err_handling() {
   set -o errtrace
   set -o errexit
 
-  trap "_exit_handler" EXIT
+  trap '_exit_handler ${LINENO}' EXIT
   trap exit ERR
 }
 
@@ -51,4 +51,19 @@ identify_OS() {
 
   printf "Could not identify your OS distribution!\n"
   exit 1
+}
+
+# Download a package with the system manager for early bootstrapping steps.
+# Parameters:
+#    $@    - names of packages to install
+download_package() {
+  local distro="$(identify_OS)"
+  if [ "$distro" -eq "Arch" ]; then
+    pacman --noconfirm $@
+  elif [ "$distro" -eq "Ubuntu" ]; then
+    apt install -y $@
+  else
+    printf "\n\nCould not identify your system to download a package.\n"
+    exit 1
+  fi
 }

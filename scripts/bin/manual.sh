@@ -5,35 +5,29 @@
 # must do manually, such as setting passwords.
 
 MANUAL_DIR="$(cd $(dirname ${BASH_SOURCE[0]} ) && pwd)"
-source $MANUAL_DIR/../lib/utils.sh
+source "$MANUAL_DIR/../lib/utils.sh"
+
+setup_err_handling
 
 ljk_password_check() {
-  require_running_as_root
-
   if command_exists passwd ; then
-    password_status="$(passwd -S ljk | grep -o NP)"
+    if [ ! -z "$(passwd -S ljk | grep -o NP)" ]; then
+      printf "\n\n\n##############################################################\n"
+      printf "            No password is set for the ljk user!\n\n"
+      passwd ljk
+      if [ $? -ne 0 ]; then
+        exit 1
+      fi
+      printf "\n\n            The new password was successfully set.\n"
+      printf "##############################################################\n"
+    else
+      printf "Checking whether passwords need to be manually configured... Complete.\n"
+    fi
   else
-    printf "You need to set a password for the ljk user, but `passwd` does not exist.\n"
+    printf "\nYou need to set a password for the ljk user, but the `passwd` program does not exist.\n"
     exit 1
   fi
-
-  if [ ! -z $password_status ]; then
-    printf "\n\n\n"
-    printf "##############################################################\n"
-    printf "            No password is set for the ljk user!\n"
-    printf "\n"
-    passwd ljk
-    if [ $? -ne 0 ]; then
-      exit 1
-    fi
-    printf "\n\n"
-    printf "            The new password was successfully set.\n"
-    printf "##############################################################\n"
-  fi
 }
 
-manual_things_to_do() {
-  ljk_password_check
-}
-
-manual_things_to_do
+require_running_as_root
+ljk_password_check
