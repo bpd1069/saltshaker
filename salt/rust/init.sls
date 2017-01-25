@@ -1,5 +1,5 @@
 include:
-  - curl
+  - simple_packages
 
 rust-installed:
   cmd.run:
@@ -7,7 +7,7 @@ rust-installed:
     - onlyif: [ -z "$(command -v rustup)" ]
     - runas: ljk
     - require:
-      - curl
+      - simple-generic-packages-installed
 
 rustup-bash-completion-installed:
   cmd.run:

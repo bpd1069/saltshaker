@@ -1,8 +1,8 @@
 base:
   '*':
     - latex
-    - npm
     - openssh
     - salt
+    - simple_packages
     - sudoers
     - users

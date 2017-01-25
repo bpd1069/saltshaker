@@ -11,7 +11,7 @@ dotfiles themselves are automatically downloaded and installed by this project).
 
 Download this repository somewhere and call the `deploy.sh` script as root.
 
-You can see some options and explanation with the help option: `deploy -h`
+You can see some options and explanation with the help option: `./deploy.sh -h`
 
 This will attempt to bootstrap up to a state where salt can be run then runs it
 to set up the localhost. This handles the case where you only managed to
@@ -22,15 +22,14 @@ to: `salt-call state.apply --state_verbose=false --local`.
 
 ### Compatibility
 
-This project is regularly used only on my Arch and Ubuntu systems. Any other
+This project is only regularly used on my Arch and Ubuntu systems. Any other
 distributions probably won't completely work. Any other OS other than Linux
-will almost assuredly not work. When encountering new systems I do add some
-fixes as I go though.
+will almost assuredly not work.
 
 ### Attribution & Licenses
 
-Some code is taken from or based on salt-formulas that have been cut down and
-altered.
+Some code is often taken from or based on salt-formulas that have been cut down
+and altered.
 
 Assume attribution to the appropriate salt-formula authors where there is
 matching content. The license applying to the code in particular directory is

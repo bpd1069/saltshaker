@@ -1,74 +1,33 @@
 base:
   '*':
-    - bash
-    - bc
     - cron
     - locale
 
   'lodd':
-    - alsa
-    #- avr-toolchain
+    - avr-toolchain
     - chromium
-    - clamav
-    - cmus
-    - curl
-    - debianpkging
-    #- dia
     - docker
     - dotfiles
-    #- doxygen
     - emacs
-    - expect
-    - ffmpeg
-    - gdb
-    - git
+    - gems
     - gnutls
-    - go
-    - haskell
     - hosts
     - hub
-    - imagemagick
-    - inkscape
-    - inotify
-    - jq
-    - julia
-    - lisp
-    - llvm
     - lua
-    - mail
-    - mutt
-    - nasm
     - ncurses
-    - network
     - ninja
     - node
     - openssh
-    - parted
-    - perftools
-    - perl
-    - postgresql
-    - pulseaudio
     - python
     - redshift
-    - ruby
     - rust
     - salt
-    - sqlite
+    - simple_packages
     - sudoers
-    #- swig
-    - tar
     - tex
-    - tree
     - trackpoint
-    - unrar
-    - urxvt
     - users
-    - vagrant
     - vim
-    - virtualbox
-    - w3m
-    - wget
     - xmonad
     - xorg
-    - xz
     - youtube-dl

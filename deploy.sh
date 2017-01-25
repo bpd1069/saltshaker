@@ -2,6 +2,7 @@
 
 DEPLOY_DIR="$(cd $( dirname ${BASH_SOURCE[0]} )  && pwd )"
 BIN_DIR="$DEPLOY_DIR/scripts/bin/"
+
 source $DEPLOY_DIR/scripts/lib/utils.sh
 
 # Set things up
@@ -29,6 +30,7 @@ EOF
 bootstrap_step=false
 salt_step=false
 manual_step=false
+
 while getopts ":hbsm" opt; do
   case "${opt}" in
     h)

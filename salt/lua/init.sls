@@ -1,10 +1,14 @@
-luajit-installed:
-  pkg.installed:
-    - name: luajit
+luarocks-installed:
+  cmd.script:
+    - source: salt://lua/scripts/luarocks_install.sh
+    - runas: root
+    - shell: /bin/bash
+    - unless: test -x /usr/local/bin/luarocks
 
-lua-installed-for-luac:
-  pkg.installed:
-    - name: lua50
-
-include:
-  - lua.luarocks
+luaposix-installed:
+  cmd.run:
+    - name: luarocks install luaposix
+    - runas: root
+    - unless: luajit -e "local posix = require 'posix.unistd'"
+    - requires:
+      - luarocks-installed
