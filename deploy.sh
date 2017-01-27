@@ -35,42 +35,37 @@ while getopts ":hbsm" opt; do
   case "${opt}" in
     h)
       usage
-      exit 0
-      ;;
+      exit 0 ;;
     b)
-      bootstrap_step=true
-      ;;
+      bootstrap_step=true ;;
     s)
-      salt_step=true
-      ;;
+      salt_step=true ;;
     m)
-      manual_step=true
-      ;;
+      manual_step=true ;;
     *)
       printf "Unknown option provided!\n\n"
       usage
-      exit 1
-      ;;
+      exit 1 ;;
   esac
 done
 
-require_running_as_root
+_exit_if_fails require_running_as_root
 setup_err_handling
 
 if $bootstrap_step || $salt_step || $manual_step ; then
   if "$bootstrap_step" ; then
-    bash $BIN_DIR/bootstrap.sh
+    _exit_if_fails bash $BIN_DIR/bootstrap.sh
   fi
   if "$salt_step" ; then
-    bash $BIN_DIR/apply.sh
+    _exit_if_fails bash $BIN_DIR/apply.sh
   fi
   if "$manual_step" ; then
-    bash $BIN_DIR/manual.sh
+    _exit_if_fails bash $BIN_DIR/manual.sh
   fi
 else
-  bash $BIN_DIR/bootstrap.sh
-  bash $BIN_DIR/apply.sh
-  bash $BIN_DIR/manual.sh
+  _exit_if_fails bash $BIN_DIR/bootstrap.sh
+  _exit_if_fails bash $BIN_DIR/apply.sh
+  _exit_if_fails bash $BIN_DIR/manual.sh
 fi
 
 exit 0

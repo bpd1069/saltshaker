@@ -5,15 +5,15 @@
 # If a package has any sort of logic or procedure to its installation, for
 # example things like else statements such as 'if debian this else that', are
 # not dealt with here and are instead moved over to the salt state template
-# files.
+# files quickly.
 
 # Always installed
 simple_generic_packages:
   - alex
   - alsa-utils
   - atop
-  - avr-libc
-  - avrdude
+  #- avr-libc
+  #- avrdude
   - bash
   - bc
   - cabal-install
@@ -46,8 +46,6 @@ simple_generic_packages:
   - mutt
   - nasm
   - nmap
-  - nodejs
-  - npm
   - parted
   - perl
   - postgresql
@@ -55,6 +53,7 @@ simple_generic_packages:
   - ruby
   - rxvt-unicode
   - sbcl
+  - screenfetch
   - sqlite
   - swig
   - tar
@@ -68,9 +67,9 @@ simple_generic_packages:
 # Only on Arch systems
 simple_arch_packages:
   - alsa-plugins
-  - avr-binutils
-  - avr-gcc
-  - avr-gdb
+  #- avr-binutils
+  #- avr-gcc
+  #- avr-gdb
   - go
   - pacaur
   - pulseaudio-alsa
@@ -82,11 +81,11 @@ simple_arch_packages:
 simple_debian_packages:
   - alsa-base
   - arduino
-  - avra
-  - binutils-avr
+  #- avra
+  #- binutils-avr
   - build-essential
-  - gcc-avr
-  - gdb-avr
+  #- gcc-avr
+  #- gdb-avr
   - guile-2.0-dev
   - libncurses5-dev
   - ncurses-bin
@@ -100,6 +99,9 @@ simple_debian_packages:
   - xz-utils
   - xzdec
 
+
+# These are packages installed with various system independent package managers
+# and so are always installed
 simple_cabal_packages:
   - pandoc
 
@@ -114,3 +116,5 @@ simple_cargo_packages:
   - racer
   - ripgrep
   - rustfmt
+
+simple_pip_packages: []

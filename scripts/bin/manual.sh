@@ -14,10 +14,7 @@ ljk_password_check() {
     if [ ! -z "$(passwd -S ljk | grep -o NP)" ]; then
       printf "\n\n\n##############################################################\n"
       printf "            No password is set for the ljk user!\n\n"
-      passwd ljk
-      if [ $? -ne 0 ]; then
-        exit 1
-      fi
+      _exit_if_fails passwd ljk
       printf "\n\n            The new password was successfully set.\n"
       printf "##############################################################\n"
     else

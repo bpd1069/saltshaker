@@ -2,6 +2,7 @@ base:
   '*':
     - cron
     - locale
+    - salt
 
   'lodd':
     - avr-toolchain
@@ -21,7 +22,6 @@ base:
     - python
     - redshift
     - rust
-    - salt
     - simple_packages
     - sudoers
     - tex

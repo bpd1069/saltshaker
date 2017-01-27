@@ -1,4 +1,4 @@
 include:
-  - salt.minion
-  - salt.master
+  - salt.formulas
   - salt.ssh
+  - salt.standalone

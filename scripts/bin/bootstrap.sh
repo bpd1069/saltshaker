@@ -10,7 +10,7 @@ setup_err_handling
 ensure_curl_is_installed() {
   if ! command_exists curl ; then
     printf "curl is not installed... Attempting installation... "
-    download_package "curl"
+    _exit_if_fails download_package "curl"
     printf "Complete.\n"
   fi
 }
@@ -20,7 +20,7 @@ ensure_curl_is_installed() {
 ensure_rsync_is_installed() {
   if ! command_exists rsync ; then
     printf "rsync is not installed... Attempting installation... "
-    download_package "rsync"
+    _exit_if_fails download_package "rsync"
     printf "Complete.\n"
   fi
 }
@@ -31,8 +31,8 @@ ensure_salt_is_installed() {
 
     printf "salt is not installed... Attempting installation... \n"
     # This will leave a 'tmp/bootstrap-salt.log' file you can look at
-    curl -L https://bootstrap.saltstack.com -o /tmp/bootstrap_salt.sh
-    sh /tmp/bootstrap_salt.sh -D -X -F -q
+    _exit_if_fails curl -L https://bootstrap.saltstack.com -o /tmp/bootstrap_salt.sh
+    _exit_if_fails sh /tmp/bootstrap_salt.sh -D -X -F -q
     rm /tmp/bootstrap_salt.sh
     printf "Complete.\n"
   fi
@@ -46,7 +46,5 @@ bootstrap_system() {
 }
 
 
-#require_running_as_root
-printf "Bootstrapping system up to state where salt can run... "
-#bootstrap_system
-printf "Complete.\n"
+require_running_as_root
+bootstrap_system

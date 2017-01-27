@@ -8,12 +8,12 @@ source "$APPLY_DIR/../lib/utils.sh"
 setup_err_handling
 
 override_local_salt_files() {
-  rsync -av --delete $APPLY_DIR/../../salt/ /srv/salt > /dev/null 2>&1
-  rsync -av --delete $APPLY_DIR/../../pillar/ /srv/pillar > /dev/null 2>&1
+  _exit_if_fails rsync -av --delete $APPLY_DIR/../../salt/ /srv/salt > /dev/null 2>&1
+  _exit_if_fails rsync -av --delete $APPLY_DIR/../../pillar/ /srv/pillar > /dev/null 2>&1
 }
 
 apply_salt_highstate() {
-  salt-call state.apply --state_verbose=false --local $@
+  _exit_if_fails salt-call state.apply --state_verbose=false --local $@
 }
 
 require_running_as_root

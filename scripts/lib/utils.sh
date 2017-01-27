@@ -2,6 +2,13 @@
 
 # Miscellaneous bash used all over other scripts
 
+_exit_if_fails() {
+  if ! $@
+  then
+    exit 1
+  fi
+}
+
 _exit_handler() {
   local err_code="$?"
   test $err_code == 0 && return;
@@ -17,10 +24,10 @@ _exit_handler() {
 }
 
 setup_err_handling() {
+  set -o errexit
+  set -o errtrace
   set -o nounset
   set -o pipefail
-  set -o errtrace
-  set -o errexit
 
   trap '_exit_handler ${LINENO}' EXIT
   trap exit ERR

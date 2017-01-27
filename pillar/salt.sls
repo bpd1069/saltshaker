@@ -5,14 +5,43 @@ salt:
   clean_config_d_dir: False
 
   # This state will remove "/etc/salt/minion" when you set this to true.
-  minion_remove_config: True
+  minion_remove_config: False
 
   # This state will remove "/etc/salt/master" when you set this to true.
-  master_remove_config: True
+  master_remove_config: False
 
+  # Set this to False to not have the formula install packages (in the case you
+  # install Salt via git/pip/etc.)
   install_packages: True
 
-  fileserver_background:
-    - git
-    - root
+  # to overwrite map.jinja salt packages
+  lookup:
+    salt-master: 'salt-master'
+    salt-minion: 'salt-minion'
+    salt-syndic: 'salt-syndic'
+    salt-cloud: 'salt-cloud'
+    salt-ssh: 'salt-ssh'
 
+  minion:
+    master_type: 'disable'
+    file_roots:
+      base:
+        - /srv/salt
+    pillar_roots:
+      base:
+        - /srv/pillar
+
+salt_formulas:
+  git_opts:
+    default:
+      baseurl: https://github.com/saltstack-formulas
+      basedir: /srv/formulas
+      update: False
+  basedir_opts:
+    makedirs: True
+    user: root
+    group: root
+    mode: 755
+  list:
+    base:
+      - node-formula

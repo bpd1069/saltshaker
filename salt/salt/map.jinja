@@ -31,6 +31,10 @@
 {## Start with  defaults from defaults.yaml ##}
 {% import_yaml "salt/defaults.yaml" as default_settings %}
 
+{##
+Setup variable using grains['os_family'] based logic, only add key:values here
+that differ from whats in defaults.yaml
+##}
 {% set osrelease = salt['grains.get']('osrelease') %}
 {% set os_family_map = salt['grains.filter_by']({
     'Debian':  {
@@ -53,7 +57,10 @@
       },
     },
     'RedHat':  {
-      'pygit2': 'python-pygit2',
+      'pygit2': salt['grains.filter_by']({
+        'Fedora': 'python2-pygit2',
+        'default': 'python-pygit2',
+      }, grain='os'),
       'python_git': 'GitPython',
       'gitfs': {
         'pygit2': {
@@ -67,7 +74,6 @@
       'master': {
         'gitfs_provider': 'pygit2'
       },
-      'repotype': 'epel',
     },
     'Suse':    {},
     'Gentoo':  {
@@ -78,12 +84,24 @@
       'salt_cloud': 'app-admin/salt',
     },
     'Arch':    {
-      'salt_master': 'salt-zmq',
-      'salt_minion':  'salt-zmq',
-      'salt_syndic':  'salt-zmq',
-      'salt_cloud':  'salt-zmq',
-      'salt_api': 'salt-zmq',
-      'salt_ssh':  'salt-zmq',
+      'salt_master': 'salt',
+      'salt_minion':  'salt',
+      'salt_syndic':  'salt',
+      'salt_cloud':  'salt',
+      'salt_api': 'salt',
+      'salt_ssh':  'salt',
+      'pygit2': 'python2-pygit2',
+      'libgit2': 'libgit2',
+    },
+    'Alpine': {
+      'salt_master': 'salt-master',
+      'salt_minion': 'salt-minion',
+      'salt_syndic': 'salt-syndic',
+      'salt_cloud': 'salt-cloud',
+      'salt_api': 'salt-api',
+      'salt_ssh': 'salt-ssh',
+      'pygit2': 'py2-pygit2',
+      'libgit2': 'libgit2',
     },
     'FreeBSD': {
       'salt_master': 'py27-salt',
@@ -138,6 +156,26 @@
       salt['grains.get']('os_family')|lower + '/' + salt['grains.get']('osmajorrelease', osrelease) + '/armhf/latest ' + salt['grains.get']('oscodename') + ' main',
       'key_url': 'https://repo.saltstack.com/apt/' + salt['grains.get']('os_family')|lower + '/' + salt['grains.get']('osmajorrelease', osrelease) + '/armhf/latest/SALTSTACK-GPG-KEY.pub',
     },
+    'SmartOS': {
+      'salt_master': 'salt',
+      'salt_minion': 'salt',
+      'salt_syndic': 'salt',
+      'salt_cloud': 'salt',
+      'salt_api': 'salt',
+      'salt_ssh': 'salt',
+      'minion_service': 'salt:minion',
+      'master_service': 'salt:master',
+      'python_dulwich': 'py27-dulwich',
+      'gitfs': {
+        'dulwich': {
+          'install_from_source': False,
+        }
+      },
+      'config_path': '/opt/local/etc/salt',
+      'master': {
+        'gitfs_provider': 'dulwich'
+      },
+    }
   }, grain='os', merge=salt['pillar.get']('salt:lookup')))
 %}
 
