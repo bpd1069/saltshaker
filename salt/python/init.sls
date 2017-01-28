@@ -20,9 +20,9 @@ pip-installed:
   pkg.installed:
     - name: {{ python.pip_pkg }}
 
-virtualenv-installed:
+simple-pip-packages-installed:
   pip.installed:
-    - name: virtualenv
+    - names: {{ pillar['simple_pip_packages'] }}
 
 pypy-installed:
   pkg.installed:

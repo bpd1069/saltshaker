@@ -117,4 +117,6 @@ simple_cargo_packages:
   - ripgrep
   - rustfmt
 
-simple_pip_packages: []
+simple_pip_packages:
+  - tox
+  - virtualenv
